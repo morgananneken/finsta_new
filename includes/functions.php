@@ -64,3 +64,27 @@ function count_comments( $id ){
         }
     }
 }
+
+/**
+ * Display the feedback after a typical form submission
+ * @param string $message The feedback message for the user
+ * @param string $class The CSS class for the feedback div - use 'error' or 'success'
+ * @param array $list   The list of error issues
+ * @return mixed HTML output
+ */
+function show_feedback( &$message, &$class = 'error', $list = array() ){
+    if( isset( $message ) ){ ?>
+        <div class="feedback <?php echo $class; ?>">
+            <h4><?php echo $message; ?></h4>
+            <?php 
+            if( ! empty($list) ){ 
+                echo '<ul>';
+                foreach ( $list AS $item ) {
+                    echo "<li>$item</li>";
+                }
+                echo '</ul>';
+            }
+            ?>
+        </div>
+    <?php }
+}
