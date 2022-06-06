@@ -1,6 +1,5 @@
 TODO
 ====
-* make search and results
 * make the register form
 * make the login form
 * make the user profile template
@@ -8,6 +7,9 @@ TODO
 
 DONE
 ====
+* build the search form
+* build the search results page
+* add pagination to "flip" through the results
 * build the basic home page
 * chunk down the header, footer, sidebar
 * Make function to count comments on each post

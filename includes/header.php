@@ -11,4 +11,11 @@
 	<div class="site">
 		<header class="header">
 			<h1><a href="index.php">Finsta</a></h1>
+			<nav class="main-navigation">
+				<form action="search.php" class="searchform" method="get">
+					<label for="" class="screen-reader-text">Search</label>
+					<input type="search" name="phrase">
+					<input type="submit" value="Search">
+				</form>
+			</nav>
 		</header>	
