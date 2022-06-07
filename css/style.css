@@ -243,6 +243,12 @@ h3{
 .success{
 	background-color: lightgreen;
 }
+.field-error, input.field-error{
+	border: solid 1px tomato;
+}
+label.field-error{
+	border-radius: .4rem;
+}
 .important{
 	width:100%;
 	max-width: 100%;

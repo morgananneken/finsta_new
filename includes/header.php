@@ -17,5 +17,9 @@
 					<input type="search" name="phrase">
 					<input type="submit" value="Search">
 				</form>
+
+				<ul class="menu">
+					<li><a href="register.php">Sign Up</a></li>
+				</ul>
 			</nav>
 		</header>	

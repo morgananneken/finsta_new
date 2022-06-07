@@ -111,3 +111,39 @@ function debug_statement($sth){
         echo '</pre>';
     }
 }
+
+/**
+ * Helper function to make <select> dropdowns sticky
+ * @param  mixed $thing1 
+ * @param  mixed $thing2 
+ * @return string         the 'selected' attribute for HTML
+ */
+function selected( $thing1, $thing2 ){
+    if( $thing1 == $thing2 ){
+        echo 'selected';
+    }
+}
+
+/**
+ * Helper function to make input checkboxes "sticky"
+ * @param  mixed $thing1 
+ * @param  mixed $thing2 
+ * @return string         the 'checked' attribute for HTML
+ */
+function checked( $thing1, $thing2 ){
+    if( $thing1 == $thing2 ){
+        echo 'checked';
+    }
+}
+
+/**
+ * Output a class on a form input that triggered an error
+ * @param  string $field the name of the field we're checking
+ * @param  array  $list  the list of all errors on the form
+ * @return string        css class 'field-error'
+ */
+function field_error( $field, $list = array() ){
+    if( isset( $list[$field] ) ){
+        echo 'field-error';
+    }
+}
