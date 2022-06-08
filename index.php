@@ -26,7 +26,7 @@ require('includes/header.php');
 			<div class="post">
 				<a href="single.php?post_id=<?php echo $post_id; ?>"><img src="<?php echo $image; ?>" alt="<?php echo $title; ?>"></a>
 				<span class="author">
-					<img src="<?php echo $profile_pic; ?>" width="50" height="50" alt="<?php echo $username; ?>">
+					<?php show_profile_pic( $profile_pic, $username, 50 ); ?>
 					<?php echo $username; ?>
 				</span>
 				<h2><?php echo $title; ?></h2>

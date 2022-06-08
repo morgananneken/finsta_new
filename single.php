@@ -9,9 +9,9 @@ if($post_id < 0){
     $post_id = 0;
 }
 
-
-require('includes/parse-comment.php');
 require('includes/header.php');
+require('includes/parse-comment.php');
+
 ?>
 		<main class="content">
 			<?php //get one requested post
@@ -36,7 +36,7 @@ require('includes/header.php');
 			<div class="post">
 				<img src="<?php echo $image; ?>" alt="<?php echo $title; ?>">
 				<span class="author">
-					<img src="<?php echo $profile_pic; ?>" width="50" height="50" alt="<?php echo $username; ?>">
+					<?php show_profile_pic( $profile_pic, $username, 50 ); ?>
 					<?php echo $username; ?>
 				</span>
 				<h2><?php echo $title; ?></h2>
@@ -50,7 +50,11 @@ require('includes/header.php');
                     include('includes/comments.php');
                     //only show the comment form if this post has comments enabled
                     if($allow_comments){
-                        include('includes/comment-form.php');
+						if($logged_in_user){
+							include('includes/comment-form.php');
+						}else{
+							echo 'Wanna Comment? Register or Log in!';
+						}
                     }else{
 						echo '<div class="message">Comments are closed on this post.</div>';
 					}//end if allow comments
