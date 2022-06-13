@@ -1,7 +1,7 @@
 TODO
 ====
-* make comments work with the logged in person
-* make the default profile pic show up in the sidebar
+* make the new post page and parser
+* make the edit post page
 * make the user profile template
 * write the TOS
 
@@ -23,3 +23,5 @@ DONE
 * Add login aurthentication to certain features (commenting, new post etc)
 * make the register form
 * make the login form
+* make comments work with the logged in person
+* make the default profile pic show up in the sidebar
