@@ -1,7 +1,12 @@
 TODO
 ====
+
+* display uploaded images throughout the site with a helper function
+* Add an "edit" button to only  the logged in user's posts
+
 * make the new post page and parser
 * make the edit post page
+
 * make the user profile template
 * write the TOS
 
@@ -25,3 +30,4 @@ DONE
 * make the login form
 * make comments work with the logged in person
 * make the default profile pic show up in the sidebar
+* Build the "edit post" screen (step 2 of adding a new post)

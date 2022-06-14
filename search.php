@@ -71,7 +71,7 @@ require('includes/header.php');
     ?>
     <div class="item">
         <a href="single.php?post_id=<?php echo $post_id; ?>">
-        <img src="<?php echo $image; ?>" alt="<?php echo $title; ?>" width="200" height="200">
+        <?php show_post_image( $image, 'medium', $title ); ?>
         <h3><?php echo $title; ?></h3>
         <span class="date"><?php echo convert_date( $date ); ?></span>
         </a>

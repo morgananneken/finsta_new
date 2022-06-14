@@ -105,8 +105,8 @@ if( isset($_POST['did_upload']) ){
             //checked to see if it worked
             if( $result->rowCount() ){
                 //success go to step 2
-                $feedback = 'Success';
-                $feedback_class = 'success';
+				$post_id = $DB->lastInsertID();
+                header("Location:edit-post.php?post_id=$post_id");
             }else{
                 $feedback = 'Your post could not be saved';
                 $feedback_class = 'error';
