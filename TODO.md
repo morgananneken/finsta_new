@@ -1,8 +1,12 @@
 TODO
 ====
-
+* add "likes" table and dummy data
+* dispay the number of likes on a post
+* make the heart interface
 * display uploaded images throughout the site with a helper function
 * Add an "edit" button to only  the logged in user's posts
+
+* make the likes interface not throw a warning when not logged in
 
 * make the new post page and parser
 * make the edit post page

@@ -262,3 +262,47 @@ function edit_post_button( $post_id = 0, $post_author = 0 ){
         echo "<a href='edit-post.php?post_id=$post_id' class='button button-outline'>Edit</a>";
     }
 }
+
+/**
+ * Count the likes on any post
+ * @param int $post_id
+ * @return string "X likes"
+ */
+function count_likes( $post_id ){
+    global $DB;
+    $result = $DB->prepare('SELECT count(*) AS total_likes
+                            FROM likes
+                            WHERE post_id = ?');
+    $result->execute( array( $post_id ) );
+    $row = $result->fetch();
+    extract($row);
+    //return the count with good grammar
+    return $total_likes == 1 ? '1 Like' : "$total_likes Likes";
+}
+
+
+function like_interface( $post_id, $user_id = 0 ){
+    global $DB;
+    //is the viewer logged in?
+    if($user_id){
+        //does the user like this post?
+        $result = $DB->prepare('SELECT * FROM likes
+                                WHERE user_id = ?
+                                AND post_id = ?
+                                LIMIT 1');
+        $result->execute(array( $user_id, $post_id ) );
+        if($result->rowCount() ){
+            $class = 'you-like';
+        }else{
+            $class = 'not-liked';
+        }
+    }//end if logged in
+    ?>
+    <span class="like-interface">
+        <span class="<?php echo $class; ?>">
+            <span class="heart-button" data-postid="<?php echo $post_id; ?>">❤</span>
+            <?php echo count_likes( $post_id ); ?>
+        </span>
+    </span>
+    <?php
+}
