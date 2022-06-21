@@ -306,3 +306,65 @@ function like_interface( $post_id, $user_id = 0 ){
     </span>
     <?php
 }
+
+
+/**
+ * Count the number of times this user appears in the "to" field
+ */
+function count_followers( $user_id ){
+    global $DB;
+    $result = $DB->prepare('SELECT COUNT(*) as total
+                            FROM follows
+                            WHERE to_user_id = ?
+                            ');
+    $result->execute( array($user_id) );
+    $row = $result->fetch();
+    extract($row);
+    echo $total == 1 ? '1 Follower' : "$total Followers";
+}
+
+/**
+ * Count the number of times this user appears in the "from" field
+ */
+function count_following( $user_id ){
+    global $DB;
+    $result = $DB->prepare('SELECT COUNT(*) as total
+                            FROM follows
+                            WHERE from_user_id = ?
+                            ');
+    $result->execute( array($user_id) );
+    $row = $result->fetch();
+    extract($row);
+    echo "$total Following";
+}
+
+function follows_interface( $profile_id ){
+    global $logged_in_user;
+    global $DB;
+    //does the logged in user already follow this profile?
+    $result = $DB->prepare('SELECT * FROM follows
+                            WHERE to_user_id = :to
+                            AND from_user_id = :from
+                            LIMIT 1');
+    $result->execute( array(
+                    'to' => $profile_id,
+                    'from' =>$logged_in_user['user_id'],
+                    ) );
+    if($result->rowCount()){
+        //already following
+        $label = 'Unfollow';
+        $class = 'button-outline';
+    }else{
+        //not yet following
+        $label = 'Follow';
+        $class = 'button';
+    }
+    ?>
+    <div class="item"><?php count_followers($profile_id); ?></div>
+    <div class="item"><?php count_following($profile_id); ?></div>
+    <?php if( $logged_in_user AND $logged_in_user['user_id'] != $profile_id ){ ?>
+    <div class="item"><button class="follow-button <?php echo $class; ?>" data-to="<?php echo $profile_id; ?>">
+    <?php echo $label; ?></button></div>
+    <?php
+    }//end if logged in 
+}
